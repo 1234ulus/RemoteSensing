@@ -1,0 +1,282 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <useAdvancedOptions>false</useAdvancedOptions>
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\S3B_OL_2_WFR____20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\S3B_OL_2_WFR____20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\xfdumanifest.xml</file>
+      <copyMetadata>true</copyMetadata>
+      <bandNames/>
+      <pixelRegion>0,0,4865,4091</pixelRegion>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="Reproject">
+    <operator>Reproject</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <wktFile/>
+      <crs>EPSG:4326</crs>
+      <resampling>Nearest</resampling>
+      <referencePixelX/>
+      <referencePixelY/>
+      <easting/>
+      <northing/>
+      <orientation/>
+      <pixelSizeX/>
+      <pixelSizeY/>
+      <width/>
+      <height/>
+      <tileSizeX/>
+      <tileSizeY/>
+      <orthorectify>false</orthorectify>
+      <elevationModelName/>
+      <noDataValue>NaN</noDataValue>
+      <includeTiePointGrids>true</includeTiePointGrids>
+      <addDeltaBands>false</addDeltaBands>
+    </parameters>
+  </node>
+  <node id="Subset">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Reproject"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <tiePointGrids/>
+      <region>0,0,0,0</region>
+      <referenceBand/>
+      <geoRegion>POLYGON ((5 70, 20 70, 20 65, 5 65, 5 70, 5 70))</geoRegion>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Subset(2)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="Reproject"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <tiePointGrids/>
+      <region>0,0,0,0</region>
+      <referenceBand/>
+      <geoRegion>POLYGON ((5 70, 20 70, 20 65, 5 65, 5 70, 5 70))</geoRegion>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Write(2)">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset(2)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\DONE\20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\CHL__20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+  <node id="BandMaths">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Reproject"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>LAND</name>
+          <type>float32</type>
+          <expression>if WQSF_lsb_LAND then 0 else 1</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Subset(3)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="BandMaths"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <tiePointGrids/>
+      <region>0,0,0,0</region>
+      <referenceBand/>
+      <geoRegion>POLYGON ((5 70, 20 70, 20 65, 5 65, 5 70, 5 70))</geoRegion>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Write(3)">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset(3)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\DONE\20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\LAND__20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+  <node id="BandMaths(2)">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Reproject"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>CLOUD</name>
+          <type>float32</type>
+          <expression>if WQSF_lsb_CLOUD_MARGIN or WQSF_lsb_CLOUD_AMBIGUOUS or WQSF_lsb_CLOUD then 0 else 1</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Subset(4)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="BandMaths(2)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <tiePointGrids/>
+      <region>0,0,0,0</region>
+      <referenceBand/>
+      <geoRegion>POLYGON ((5 70, 20 70, 20 65, 5 65, 5 70, 5 70))</geoRegion>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Write(4)">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset(4)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\DONE\20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\CLOUD_20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+  <node id="BandMaths(3)">
+    <operator>BandMaths</operator>
+    <sources>
+      <sourceProduct refid="Reproject"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <targetBands>
+        <targetBand>
+          <name>Valid</name>
+          <type>float32</type>
+          <expression>if WQSF_lsb_INVALID or WQSF_lsb_COSMETIC or  WQSF_lsb_SATURATED or WQSF_lsb_SUSPECT or WQSF_lsb_HIGHGLINT or  WQSF_lsb_HISOLZEN or WQSF_lsb_SNOW_ICE or WQSF_lsb_AC_FAIL or WQSF_lsb_WHITECAPS or WQSF_msb_ANNOT_ABSO_D or WQSF_msb_ANNOT_MIXR1 or WQSF_msb_ANNOT_DROUT or WQSF_msb_ANNOT_TAU06 or WQSF_msb_RWNEG_O2 or WQSF_msb_RWNEG_O3 or WQSF_msb_RWNEG_O4 or WQSF_msb_RWNEG_O5 or WQSF_msb_RWNEG_O6 or WQSF_msb_RWNEG_O7 or WQSF_msb_RWNEG_O8 then 0 else 1</expression>
+          <description/>
+          <unit/>
+          <noDataValue>0.0</noDataValue>
+        </targetBand>
+      </targetBands>
+      <variables/>
+    </parameters>
+  </node>
+  <node id="Subset(5)">
+    <operator>Subset</operator>
+    <sources>
+      <sourceProduct refid="BandMaths(3)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <sourceBands/>
+      <tiePointGrids/>
+      <region>0,0,0,0</region>
+      <referenceBand/>
+      <geoRegion>POLYGON ((5 70, 20 70, 20 65, 5 65, 5 70, 5 70))</geoRegion>
+      <subSamplingX>1</subSamplingX>
+      <subSamplingY>1</subSamplingY>
+      <fullSwath>false</fullSwath>
+      <copyMetadata>false</copyMetadata>
+    </parameters>
+  </node>
+  <node id="Write(5)">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset(5)"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\DONE\20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\Valid_20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="Subset"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>C:\Users\sungg1112\Desktop\MySnap\Sentinel3\2024\DONE\20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3\RGB_20240507T095429_20240507T095729_20240508T171526_0179_092_350_1800_MAR_O_NT_003.SEN3.tif</file>
+      <formatName>GeoTIFF</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="37.0" y="134.0"/>
+    </node>
+    <node id="Reproject">
+      <displayPosition x="135.0" y="133.0"/>
+    </node>
+    <node id="Subset">
+      <displayPosition x="372.0" y="235.0"/>
+    </node>
+    <node id="Subset(2)">
+      <displayPosition x="370.0" y="177.0"/>
+    </node>
+    <node id="Write(2)">
+      <displayPosition x="487.0" y="182.0"/>
+    </node>
+    <node id="BandMaths">
+      <displayPosition x="223.0" y="8.0"/>
+    </node>
+    <node id="Subset(3)">
+      <displayPosition x="364.0" y="8.0"/>
+    </node>
+    <node id="Write(3)">
+      <displayPosition x="485.0" y="9.0"/>
+    </node>
+    <node id="BandMaths(2)">
+      <displayPosition x="219.0" y="68.0"/>
+    </node>
+    <node id="Subset(4)">
+      <displayPosition x="370.0" y="68.0"/>
+    </node>
+    <node id="Write(4)">
+      <displayPosition x="487.0" y="66.0"/>
+    </node>
+    <node id="BandMaths(3)">
+      <displayPosition x="251.0" y="116.0"/>
+    </node>
+    <node id="Subset(5)">
+      <displayPosition x="368.0" y="115.0"/>
+    </node>
+    <node id="Write(5)">
+      <displayPosition x="488.0" y="115.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="481.0" y="231.0"/>
+    </node>
+  </applicationData>
+</graph>
