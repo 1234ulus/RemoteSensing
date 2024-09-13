@@ -2,7 +2,7 @@
 Resources to run remote sensing analysis of ocean color products.
 As an oceanographer, I have observed a large discrepancy between information on water and land remote sensing applications.
 I share my notebooks to support other beginners in this field. 
-I believe that working on these resources will help me systematize my own knowledge and recreate my analyses after a break.
+I believe that working on these resources will help me systematize my own knowledge and recreate my analyses in future.
 Created notebook are base on NASA resources: https://oceancolor.gsfc.nasa.gov/resources/docs/tutorials/
 
 By far I solved two main problems from this resorces:
@@ -17,4 +17,11 @@ https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.h
 *I don't remember the exact name now. Soon I will be building the environment again so I will give the details then
 
 My goal is to create for each interesting me satellite: MODIS, SENTINEL-3, PACE set of 3 jupyter notebook about:
-searching and downloading, exploring, ploting.
+1) searching and downloading,
+2) exploring,
+3) ploting.
+
+I added 3 graphs helping with processing data in SNAP to obtain GeoTiffs.
+1) MODIS.xml , for MODIS data, level 2, OC product
+2) VII.xml , for VIIRS data, level 2, OC product
+3) SEN3.xml, for Sentinel - 3 data, level 2, WFR pruduct
