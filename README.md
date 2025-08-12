@@ -1,27 +1,54 @@
 # RemoteSensing
-Resources to run remote sensing analysis of ocean color products.
-As an oceanographer, I have observed a large discrepancy between information on water and land remote sensing applications.
-I share my notebooks to support other beginners in this field. 
-I believe that working on these resources will help me systematize my own knowledge and recreate my analyses in future.
-Created notebook are base on NASA resources: https://oceancolor.gsfc.nasa.gov/resources/docs/tutorials/
 
-By far I solved two main problems from this resorces:
-1) How to deal with ValueError: "x and y arguments to pcolormesh cannot have non-finite values or be of type numpy.ma.MaskedArray with masked values" when want to plot coordninates on map
-2) Add to plot with PACE data, band wavelangth information instead of an arbitrary discrete group
+This repository include Jupyter notebook for ocean color and sea ice remote sensing products. As an oceanographer, I’ve observed a significant gap in accessible resources and tutorials focused on ocean applications of remote sensing, compared to terrestrial studies. This collection of Jupyter notebooks can support beginners and practitioners alike in exploring, analyzing, and interpreting oceanographic satellite data.
 
-Python environment is needed, to run notebooks. 
-1) I started with installing environment provided by NASA in file environment.yml How to do so fallow link below:
-https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file
-2) There is major crash in one main of packages*. Notebook can't import it. Solution is to uninstall it and install again by "PIP install".
-3) I installed additional packages when there was a need
-*I don't remember the exact name now. Soon I will be building the environment again so I will give the details then
 
-My goal is to create for each interesting me satellite: MODIS, SENTINEL-3, PACE set of 3 jupyter notebook about:
-1) searching and downloading,
-2) exploring,
-3) ploting.
 
-I added 3 graphs helping with processing data in SNAP to obtain GeoTiffs.
-1) MODIS.xml , for MODIS data, level 2, OC product
-2) VII.xml , for VIIRS data, level 2, OC product
-3) SEN3.xml, for Sentinel - 3 data, level 2, WFR pruduct
+## Ocean color
+
+I developed a Jupyter notebook focused on ocean color remote sensing using NASA’s official resources and tutorials available here:
+
+https://oceancolor.gsfc.nasa.gov/resources/docs/tutorials/
+
+
+
+So far, I’ve addressed two key challenges:
+
+
+
+Resolving the ValueError: "x and y arguments to pcolormesh cannot have non-finite values or be of type numpy.ma. MaskedArray with masked values" error that occurs when plotting coordinates on a map.
+
+
+
+Enhancing plots of PACE mission data by incorporating band wavelength information, rather than relying on arbitrary discrete groupings, to improve interpretability.
+
+
+
+## Sea Ice
+
+
+
+Will be updated soon
+
+
+
+
+
+## How to starts
+
+To run these notebooks, you will need a working Python environment with the necessary scientific and geospatial libraries installed. It’s common to encounter package version conflicts or compatibility issues during updates. Different libraries may depend on specific versions of dependencies, which can sometimes cause errors or unexpected behavior.
+
+
+
+It’s a good practice to start with a Python environment created from a reliable source: NASA, EUMETSAT
+
+During your work, you may need to install additional packages or occasionally downgrade some to maintain compatibility.
+
+
+
+Eumetsat enviroment: https://gitlab.eumetsat.int/eumetlab/oceans/ocean-training/sensors/learn-olci
+
+
+
+
+
