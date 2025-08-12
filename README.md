@@ -24,6 +24,24 @@ Enhancing plots of PACE mission data by incorporating band wavelength informatio
 
 
 
+I have created notebooks:
+
+1. MODISA\_download.ipynb for MODIS Aqua data searching, downloading data and basic visualization
+2. PACE\_download.ipynb for PACE data searching, downloading data and basic visualization
+3. PACE\_explore\_data.ipynb for PACE data level 1 and level 2, gruops, variables, bands visualization, blue, green red band
+
+
+
+I have added graphs for SNAP data processing to obtain GeoTiffs.
+
+1\. MODIS.xml , for MODIS data, level 2, OC product
+
+2\. VII.xml , for VIIRS data, level 2, OC product
+
+3\. SEN3.xml, for Sentinel - 3 data, level 2, WFR pruduct
+
+
+
 ## Sea Ice
 
 
@@ -47,8 +65,4 @@ During your work, you may need to install additional packages or occasionally do
 
 
 Eumetsat enviroment: https://gitlab.eumetsat.int/eumetlab/oceans/ocean-training/sensors/learn-olci
-
-
-
-
 
